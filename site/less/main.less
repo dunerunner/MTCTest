@@ -1,0 +1,767 @@
+/* Web Fonts */
+@font-face {
+    font-family: 'Karla';
+    src: url('../fonts/karla-regular-webfont.eot');
+    src: url('../fonts/karla-regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/karla-regular-webfont.woff') format('woff'),
+        url('../fonts/karla-regular-webfont.ttf') format('truetype'),
+        url('../fonts/karla-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'KarlaBold';
+    src: url('../fonts/karla-bold-webfont.eot');
+    src: url('../fonts/karla-bold-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/karla-bold-webfont.woff') format('woff'),
+        url('../fonts/karla-bold-webfont.ttf') format('truetype'),
+        url('../fonts/karla-bold-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'KarlaItalic';
+    src: url('../fonts/karla-italic-webfont.eot');
+    src: url('../fonts/karla-italic-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/karla-italic-webfont.woff') format('woff'),
+        url('../fonts/karla-italic-webfont.ttf') format('truetype'),
+        url('../fonts/karla-italic-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'KarlaBoldItalic';
+    src: url('../fonts/karla-bolditalic-webfont.eot');
+    src: url('../fonts/karla-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/karla-bolditalic-webfont.woff') format('woff'),
+        url('../fonts/karla-bolditalic-webfont.ttf') format('truetype'),
+        url('../fonts/karla-bolditalic-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+/* RESET CSS */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Variables */
+
+
+@mainFont: Karla;
+@mainFontSize: 14;
+
+@mainColor: #3d3c3c;
+@secondaryColor:#696868;
+@headerColor:#dcdddb;
+@footerColor:#464646;
+@innerColor:#fff;
+@blockBorderColor:#d9d9d9;
+@blockHoverBorderColor:#aaa;
+@footerBorderColor:#8b8b8b;
+@gstarColor:#454545;
+@replayColor:#527286;
+@barbourColor:#745238;
+@submenuColor:#c5c5c5;
+
+/* Mixins */
+
+.clearfix() {
+    &:after{
+        clear: both;
+        content: "";
+        display: block;
+    }
+}
+
+/* Page Layout */
+body {
+    position:relative;
+    min-height:100vh;
+    box-sizing:border-box;
+    font:unit(@mainFontSize, px)/unit((2 + @mainFontSize), px) @mainFont;
+    padding:0 0 340px 0;
+    color:@mainColor;
+}
+h1 {
+    font-size:2em;
+}
+h2 {
+    font-size:1.3em;
+}
+.b {
+    &-content {
+        width:940px;
+        margin:auto;
+        .clearfix();
+    }
+    &-userbar {
+        height:60px;
+        background:@headerColor;
+    }
+    &-enquiries {
+        float:left;
+        line-height:60px;
+        &__enquirymail {
+            text-decoration:none;
+            color:@secondaryColor;
+            &:hover {
+                text-decoration:underline;
+            }
+        }
+    }
+    &-useractions,&-usersocial {
+        float:right;
+        line-height:60px;
+        .clearfix();
+    }
+    &-useractions > li {
+        display:inline-block;
+        float:left;
+    }
+    &-useractions {
+        &__action {
+            padding:0 10px;
+            text-decoration:none;
+            color:@secondaryColor;
+            &:hover {
+                text-decoration:underline;
+            }
+        }
+    }
+    &-usersocial {
+        display:table;
+        height:60px;
+        margin:0 0 0 15px;
+        & > li {
+            display:table-cell;
+            height:100%;
+            vertical-align:middle;
+        }
+        &__button {
+            display:block;
+            height:35px;
+            width:35px;
+            margin:0 0 0 10px;
+            font-size:20px;
+            line-height:35px;
+            text-align:center;
+            border-radius:100%;
+            color:@innerColor;
+            background:@mainColor;
+            &:hover {
+                background:@secondaryColor;
+            }
+            &.basket {
+                display:none;
+            }
+        }
+    }
+    &-shopheader {
+        height:163px;
+        border-bottom:1px solid @blockBorderColor;
+        & .b-content {
+            height:100%;
+            text-align:center;
+        }
+        &__btnwrap {
+            height:100%;
+            line-height:163px;
+            &_left {
+                float:left;
+            }
+            &_right {
+                float:right;
+            }
+        }
+        &__button {
+            display:inline-block;
+            width:270px;
+            border:1px solid @blockBorderColor;
+            text-align:center;
+            text-transform: uppercase;
+            text-decoration:none;
+            font-family: KarlaBold;
+            line-height:42px;
+            white-space:nowrap;
+            color:@mainColor;
+            & span {
+                font-size:unit(@mainFontSize, px);
+                text-transform: none;
+                color:@secondaryColor;
+            }
+            &:hover {
+                border:1px solid @blockHoverBorderColor;
+            }
+        }
+    }
+    &-shoplogo {
+        display:inline-block;
+        width:175px;
+        height:100%;
+        text-indent: -9999px;
+        background:url(../img/logo.jpg) no-repeat center center;
+    }
+    &-navigation {
+        .clearfix();
+        position:relative;
+    }
+    &-navmenu {
+        float:left;
+        white-space:nowrap;
+        .clearfix();
+        & > li {
+            display:inline-block;
+            float:left;
+            &:hover > .b-navsubmenu{
+                height:auto;
+                opacity:1;
+            }
+        }
+        &-mobile {
+            display:none;
+            float:left;
+            width:60px;
+            height:60px;
+            box-sizing:border-box;
+            padding:5px 0 0 0;
+            line-height:60px;
+            text-align:center;
+            color:@mainColor;
+        }
+    }
+    &-navsubmenu {
+        .clearfix();
+        overflow:hidden;
+        height:0px;
+        opacity:0;
+        -webkit-transition: opacity 0.5s ease-in-out;
+        -moz-transition: opacity 0.5s ease-in-out;
+        -ms-transition: opacity 0.5s ease-in-out;
+        -o-transition: opacity 0.5s ease-in-out;
+        transition: opacity 0.5s ease-in-out;
+        position:absolute;
+        top:60px;
+        left:0;
+        right:0;
+        background:@mainColor;
+        z-index:120;
+    }
+    &-submenu {
+        &__block {
+            display:inline-block;
+            float:left;
+            box-sizing:border-box;
+            width:25%;
+            padding:0 35px 45px 35px;
+        }
+        &__header {
+            margin:35px 0 30px 0;
+            font-family:KarlaBold;
+            text-decoration:underline;
+            text-transform:uppercase;
+            color:@innerColor;
+        }
+        &__list {
+            &.noheader {
+                margin:80px 0 0 0;
+            }
+            & > li > a {
+                line-height:20px;
+                text-transform:uppercase;
+                text-decoration:none;
+                color:@submenuColor;
+                &:hover {
+                    color:@innerColor;
+                }
+            }
+        }
+    }
+    &-navlink {
+        display:block;
+        margin:0 20px 0 0;
+        font-family: KarlaBold;
+        line-height:60px;
+        text-decoration:none;
+        text-transform: uppercase;
+        color:@mainColor;
+        &:hover {
+            color:@secondaryColor;
+        }
+    }
+    &-search {
+        float:right;
+        margin:10px 0;
+        .clearfix();
+        &__input {
+            display:inline-block;
+            float:right;
+            height:40px;
+            width:330px;
+            box-sizing:border-box;
+            border:1px solid @blockBorderColor;
+            padding:0 20px;
+            font-family:@mainFont;
+        }
+        &__button {
+            display:inline-block;
+            float:right;
+            height:40px;
+            width:50px;
+            box-sizing:border-box;
+            font-size:15px;
+            line-height:40px;
+            text-align:center;
+            color:@innerColor;
+            background:@mainColor;
+            &:hover {
+                background:@secondaryColor;
+            }
+        }
+    }
+    &-slider {
+        width:100%;
+        overflow:hidden;
+        margin:0 0 45px 0;
+        text-align:center;
+        background:@innerColor;
+        &__viewport {
+            position:relative;
+            height:490px;
+            width:820px;
+            margin:auto;
+        }
+        &__control {
+            display:block;
+            position:absolute;
+            top:0;
+            bottom:0;
+            width:50px;
+            font-size:30px;
+            z-index:100;
+            & i {
+                position:absolute;
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
+                margin:auto;
+                width:10px;
+                height:30px;
+                color:@secondaryColor;
+
+            }
+            &:hover i {
+                color:@innerColor;    
+            }
+            &.left {
+                left:0;
+            }
+            &.right {
+                right:0;
+            }
+        }
+        &__slide {
+            position:absolute;
+            top:0;
+            left:-5px;
+            height:490px;
+            width:830px;
+            -webkit-transition: opacity 0.5s linear, -webkit-transform 0.5s linear;
+            -moz-transition: opacity 0.5s linear, -moz-transform 0.5s linear;
+            -ms-transition: opacity 0.5s linear , -ms-transform 0.5s linear;
+            -o-transition: opacity 0.5s linear, -o-transform 0.5s linear;
+            transition: opacity 0.5s linear, transform 0.5s linear;
+            background:url(../img/sliderpic.jpg) no-repeat center;
+            &.active {
+                transform: translate3d(0,0,0);
+                opacity: 1;
+            }
+            &.previous,&.next {
+                opacity:0.5;
+            }
+            &.previous {
+                transform: translate3d(-100%,0,0);
+            }
+            &.leaveleft {
+                transform: translate3d(-200%,0,0);
+            }
+            &.next {
+                transform: translate3d(100%,0,0);
+            }
+            &.leaveright {
+                transform: translate3d(200%,0,0);
+            }
+            &.hidden,&.leaveleft,&.leaveright {
+                opacity:0;
+            }
+        }
+        &__controls {
+            .clearfix();
+            margin:15px 0 0 0;
+            display:inline-block;
+            & li {
+                display:inline-block;
+                float:left;
+            }
+        }
+        &__button {
+            display:block;
+            height:8px;
+            width:8px;
+            border-radius:100%;
+            margin:0 2.5px;
+            background:@secondaryColor;
+            &:hover, &.active{
+                background: @mainColor;
+            }
+        }
+    }
+    &-section-header {
+        position:relative;
+        height:37px;
+        &__line {
+            height:18px;
+            border-bottom: 1px solid @blockBorderColor;
+        }
+        &__tag {
+            display:block;
+            position:absolute;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            height:35px;
+            width:139px;
+            margin:auto;
+            border:1px solid @blockBorderColor;
+            font-family:KarlaBold;
+            color:@mainColor;
+            line-height:35px;
+            text-transform: uppercase;
+            text-align:center;
+            background:@innerColor;
+        }
+    }
+    &-brands, &-newin {
+        margin:0 0 50px 0;
+    }
+    &-arrivals {
+        .clearfix();
+        margin:50px 0 0 0;
+        white-space:nowrap;
+        & > li {
+            display:inline-block;
+            float:left;
+        }
+    }
+    &-newcollection {
+        display:block;
+        width:300px;
+        text-decoration:none;
+        &.gstar {
+            background:@gstarColor;
+        }
+        &.gstar &__image{
+            background:url(../img/gstar.jpg) no-repeat;
+        }
+        &.replay {
+            margin:0 20px;
+            background:@replayColor;
+        }
+        &.replay &__image{
+            background:url(../img/replay.jpg) no-repeat;
+        }
+        &.barbour {
+            background:@barbourColor;
+        }
+        &.barbour &__image {
+            background:url(../img/barbour.jpg) no-repeat;
+        }
+        &__image {
+            position:relative;
+            height:297px;
+            & h1 {
+                position:absolute;
+                top:100px;
+                left:65px;
+                width:170px;
+                white-space: normal;
+                text-align:center;
+                line-height:32px;
+                text-decoration:underline;
+                color:@innerColor;
+            }
+            & h2 {
+                position:absolute;
+                top:65px;
+                right:-45px;
+                text-decoration:underline;
+                transform:rotate(-90deg);
+                color:@innerColor;
+            }
+        }
+        &__name {
+            height:47px;
+            font-family:Karla;
+            line-height:47px;
+            text-transform: uppercase;
+            text-align:center;
+            color:@innerColor;
+        }
+    }
+    &-logos {
+        .clearfix();
+        white-space:nowrap;
+        border-bottom:1px solid @blockBorderColor;
+        & > li {
+            display:inline-block;
+            float:left;
+            height:82px;
+            width:20%;
+        }
+        &__gstar {
+            background:url(../img/logo-gstar.jpg) no-repeat center center;
+        }
+        &__diesel {
+            background:url(../img/logo-diesel.jpg) no-repeat center center;
+        }
+        &__barbour {
+            background:url(../img/logo-barbour.jpg) no-repeat center center;
+        }
+        &__lyle {
+            background:url(../img/logo-lyle.jpg) no-repeat center center;
+        }
+        &__replay {
+            background:url(../img/logo-replay.jpg) no-repeat center center;
+        }
+    }
+    &-footer {
+        position:absolute;
+        bottom:0;
+        height:340px;
+        width:100%;
+        background:@footerColor;
+        &-info {
+            .clearfix();
+            padding:50px 0 40px 0;
+            & > div {
+                display:inline-block;
+            }
+        }
+        &-menu {
+            float:left;
+            margin:0 120px 0 0;
+            &__link {
+                font-family:KarlaBold;
+                text-decoration:none;
+                line-height:20px;
+                color:@footerBorderColor;
+                &:hover {
+                    color:@innerColor;
+                }
+            }
+        }
+        &-address {
+            float:left;
+            & p {
+                font-family:KarlaBold;
+                line-height:20px;
+                color:@footerBorderColor;
+            }
+            &__phone {
+                margin:20px 0 0 0;
+            }
+        }
+        &-newsletter {
+            float:right;
+        }
+    }
+    &-newsletter-submit {
+        .clearfix();
+        margin:0 0 50px 0;
+        &__input {
+            display:inline-block;
+            box-sizing:border-box;
+            float:left;
+            height:40px;
+            width:300px;
+            padding:0 20px;
+            font-family:Karla;
+            color:@mainColor;
+        }
+        &__button {
+            display:inline-block;
+            float:left;
+            height:40px;
+            width:80px;
+            line-height:40px;
+            text-transform: uppercase;
+            text-decoration:none;
+            text-align:center;
+            color:@innerColor;
+            background:@mainColor;
+            &:hover{
+                background:@secondaryColor;
+            }
+        }
+    }
+    &-cards {
+        .clearfix();
+        & li {
+            display:inline-block;
+            float:left;
+            height:26px;
+            width:43px;
+            margin:0 5px 0 0;
+            &.visa {
+                background:url(../img/card-visa.jpg) no-repeat;
+            }
+            &.paypal {
+                background:url(../img/card-paypal.jpg) no-repeat;
+            }
+            &.mastercard {
+                background:url(../img/card-mastercard.jpg) no-repeat;
+            }
+            &.amex {
+                background:url(../img/card-amex.jpg) no-repeat;
+            }
+            &.solo {
+                background:url(../img/card-solo.jpg) no-repeat -1px 0;
+            }
+        }
+    }
+    &-fblock-header {
+        margin:0 0 30px 0;
+        font-family:KarlaBold;
+        text-decoration:underline;
+        text-transform:uppercase;
+        color:@innerColor;
+    }
+    &-copyright {
+        .clearfix();
+        box-sizing:border-box;
+        padding:20px 0 0 0;
+        border-top:1px solid @footerBorderColor;
+        color:@innerColor;
+        &__shop {
+            float:left;
+        }
+        &__company {
+            float:right;
+        }
+    }
+}
+@media (max-width:820px) {
+    .b-slider {
+        display:none;
+    }
+}
+@media (max-width: 940px ) {
+    body {
+        padding:0 0 60px 0;
+    }
+    .b-footer {
+        height:40px;
+        padding:20px 0 0 0;
+    }
+    .b-shopheader {
+        height:auto;
+    }
+    .b-shoplogo {
+        height:163px;
+        margin:auto;
+    }
+    .b-content {
+        width:auto;
+    }
+    .b-arrivals li {
+        display:block;
+        float:none;
+        width:300px;
+        margin:auto;
+    }
+    .b-newcollection.replay {
+        margin:0;
+    }
+    .b-logos__gstar,.b-logos__diesel,.b-logos__barbour {
+        width:33% !important;
+    }
+    .b-logos__lyle,.b-logos__replay {
+        width:50% !important;
+    }
+    .b-footer-info {
+        display:none;
+    }
+    .b-usersocial__button.basket {
+        display:block;
+    }
+    .b-useractions__action.basket {
+        display:none;
+    }
+    .b-navmenu-mobile {
+        display:block;
+    }
+    .b-navmenu {
+        display:none;
+        clear:both;
+    }
+    .b-navmenu.active {
+        display:block;
+    }
+    .b-navmenu li {
+        display:block;
+        float:none;
+        padding:0 0 0 10px;
+    }
+    .b-navsubmenu {
+        display:none;
+    }
+    .b-navsubmenu.active {
+        display:block;
+    }
+}
